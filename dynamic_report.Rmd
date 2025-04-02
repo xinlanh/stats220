@@ -1,0 +1,80 @@
+---
+title: My dynamic report
+output: html_fragment
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+
+```
+
+```{css}
+
+@import url('https://fonts.googleapis.com/css2?family=Iansui&display=swap');
+
+body {
+  font-family: "Iansui", cursive;
+  font-weight: 400;
+  font-style: normal;
+  color: #340089;
+  background-color: #f9f6f0;
+}
+
+```
+
+## Are tabs left open when you close your laptop lid? If so, how many?
+
+I performed a survey to learn if people leave tabs open when closing their laptops, and how many tabs are left open.
+
+```{r}
+library(tidyverse)
+
+cvs_file <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vSAFWvGM0O5_YDZbj2G7mNWvVdOCiSNBRqQgxAirHoAs0grpTozh-lLZ0PfrmteC38de0EgAsnkJf8T/pub?output=csv"
+
+logged_data <- read.csv(cvs_file)
+
+latest_data <- logged_data %>%
+  rename(tabs_open = 2,
+         number_of_tabs = 3,
+         course_stage = 4,
+         tab_type = 5,
+         sorted_status = 6,
+         browser = 7,
+         num_of_windows = 8)
+
+# Usable 
+plot1 <- ggplot(data = latest_data) +
+  geom_bar(aes(x = tabs_open),
+               fill = "#aab1ff") +
+  labs(title = "Are tabs kept open when laptops are closed?",
+       subtitle = "Tracking how often people leave a tab here or there open",
+       caption = "Source: A very small survey",
+       x = "Are tabs kept open?",
+       y = "Number of times")
+
+# Yaaa def using
+plot2 <- ggplot(data = latest_data) +
+  geom_bar(aes(x = number_of_tabs,
+           fill = sorted_status)) +
+  labs(title = "How many tabs are kept open?",
+       subtitle = "Tracking how many tabs are left open if people do leave them open",
+       caption = "Source: A very small survey",
+       x = "Number of tabs",
+       y = "Number of times")
+
+
+# Chosen summary values pulled from number of tabs
+mean_tabs <- mean(latest_data$number_of_tabs, na.rm = TRUE)
+max_tabs <- max(latest_data$number_of_tabs, na.rm = TRUE)
+min_tabs <- min(latest_data$number_of_tabs, na.rm = TRUE)
+
+
+```
+If tabs are left open after closing the laptop, the minimum number of tabs is `r min_tabs`, the maximum number of tabs is `r max_tabs`, and the mean number of tabs is `r mean_tabs`.
+
+ Here are some plots that represent the data I've collected:
+ 
+```{r} 
+plot1
+plot2
+```
