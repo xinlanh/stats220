@@ -1,0 +1,102 @@
+---
+title: The number of Tabs left open after closing my PC
+output: html_document
+---
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+```
+
+```{js}
+$(function() {
+  $(".level2").css('visibility', 'hidden');
+  $(".level2").first().css('visibility', 'visible');
+  $(".container-fluid").height($(".container-fluid").height() + 300);
+  $(window).on('scroll', function() {
+    $('h2').each(function() {
+      var h2Top = $(this).offset().top - $(window).scrollTop();
+      var windowHeight = $(window).height();
+      if (h2Top >= 0 && h2Top <= windowHeight / 2) {
+        $(this).parent('div').css('visibility', 'visible');
+      } else if (h2Top > windowHeight / 2) {
+        $(this).parent('div').css('visibility', 'hidden');
+      }
+    });
+  });
+})
+```
+
+```{css}
+.figcaption {display: none}
+@import url('https://fonts.googleapis.com/css2?family=Iansui&display=swap');
+
+body {
+  font-family: "Iansui", cursive;
+  font-weight: 400;
+  font-style: normal;
+  color: #5B576B;
+  background-color: #f9f6f0;
+}
+```
+
+
+![](C:\Users\Xin Lan Hu\OneDrive - The University of Auckland\Stats 220\Project4\cat_meme_p4.jpg)
+
+
+
+## What's happening?
+Nothing much is happening. I'm just collecting a little data on the number of tabs I've left open exactly like how the title implies(and maybe other miscellaneous related info). Sounds very boring right? It really is... until I reformat it!
+
+
+
+## The collected data
+At the time of this story's creation I've logged exactly a total of 40 observations (the bare minimum hahaha).! The data I've collected include the number of tabs (my main observation), the type of tabs - whether it was a canvas tab, a Google search tab, etc, the browser used, the number of windows open, and what stage was the tab was opened for.
+
+
+
+## How often did I log data?
+![](C:\Users\Xin Lan Hu\OneDrive - The University of Auckland\Stats 220\Project4\plot1_project4.png)
+
+So since I only logged data when I needed to, as this plot shows, I've only logged for two periods of time. The first cluster was when project 2 came out, and the second cluster was for this project.
+
+
+
+## Sleep when?
+
+![](C:\Users\Xin Lan Hu\OneDrive - The University of Auckland\Stats 220\Project4\plot2_project4.png)
+
+Looking at this plot I think I have a pretty normal sleep schedule... for a uni student with not very good self control and time management. Probably explains why I get sick often. Maybe its time I stop procrastinating my assignments. and go from a 3am to 11am sleep cycle to a 10pm to 6am (this is never going to happen but one can hope!)
+
+![](C:\Users\Xin Lan Hu\OneDrive - The University of Auckland\Stats 220\Project4\sleepy_cat_p4.jpg)
+
+
+
+## Tabs VS Windows
+This was something I was very interested in. How the number of tabs would affect the number of windows.
+
+![](C:\Users\Xin Lan Hu\OneDrive - The University of Auckland\Stats 220\Project4\plot3_project4.png)
+
+After looking at this plot it seems that I don't use more than 2 windows, and that the number of windows increase when I have more tabs, or maybe its the other way around.
+
+
+
+## Which day is the fullest?
+![](C:\Users\Xin Lan Hu\OneDrive - The University of Auckland\Stats 220\Project4\plot4_project4.png)
+
+Looks like Wednesdays and Sundays are the day I log the least amount of tabs. This seems to imply that on those days I don't have as much to do. HOWEVER! Unfortunately that is not true! Those days are the days clear out my tabs due to needing to focus on an assignment that's due soon. The reason for Wednesdays should be pretty clear now right? (Reminder: Stats 220 assignments are due then)
+
+
+
+## Uni stages and tabs
+The last plot created....:
+ 
+![](C:\Users\Xin Lan Hu\OneDrive - The University of Auckland\Stats 220\Project4\plot5_project4.png)
+ 
+This plot shows that the frequency I have tabs open for Stage 2 courses is the highest. This is what I expected as most my courses are Stage 2. I also expected the discrepancy between Stage 3 and Stage 1 despite having only one course in Stage 3 and two in Stage 1 as I spend much more time working on stage 3.
+ 
+ 
+
+## The End
+You've reach the end of this story. There is nothing much left to say. I would like to say I've learnt something from the data I've collected and the plots I've generated, but these have only confirmed what I already known or suspected. Maybe next time I'll collect data and learn something new!
